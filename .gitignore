@@ -1,1 +1,24 @@
+# OS files
+.DS_Store
+[T,t]humbs.db
+
+# IDE metadata
+.project
+.idea
+
+# Log files
+logs
+*.log
+
+# Dependencies
+node_modules
+bower_components
+
+# Grunt temp files
+.grunt
+
+# Sass files
 .sass-cache
+
+# Project build
+dist

@@ -1,0 +1,32 @@
+{
+  "name": "StartupSass",
+  "version": "0.0.1",
+  "description": "Small responsive site scaffolding built on Foundation Sass",
+  "keywords": [
+    "sass",
+    "framework",
+    "mobile",
+    "responsive",
+    "website",
+    "scaffolding"
+  ],
+  "author": "Michael Zalla",
+  "license": "MIT",
+  "homepage": "https://github.com/MichaelZalla/StartupSass",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MichaelZalla/StartupSass.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MichaelZalla/StartupSass/issues"
+  },
+  "main": "src/scss/main.scss",
+  "scripts": {},
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-copy": "^0.7.0",
+    "grunt-contrib-sass": "^0.8.1",
+    "grunt-contrib-watch": "^0.6.1"
+  }
+}
