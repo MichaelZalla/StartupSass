@@ -10,9 +10,9 @@ module.exports = function(grunt) {
 				files: [
 					// Make all targets in 'src' directory copy to
 					// a location in 'dist' relative to own directory
-					{ expand:true, cwd:'src/', src:['*.html'], dest:'dist' },
+					{ expand:true, cwd:'src/', src:['*.html','*.png','*.ico'], dest:'dist' },
 					{ expand:true, cwd:'src/js/', src:['**'], dest:'dist/js' },
-					{ expand:true, cwd:'src/img/', src:['**'], dest:'dist/img' },
+					{ expand:true, cwd:'src/img/', src:['*.png','*.jpg','*.jpeg'], dest:'dist/img' },
 					{ expand:true, cwd:'src/fonts/', src:['**'], dest:'dist/fonts' }
 				]
 			}
@@ -49,6 +49,7 @@ module.exports = function(grunt) {
 			options: {
 				// Helps Sass task resolve Foundation dependencies
 				loadPath: 'bower_components/foundation/scss',
+				style: 'compressed',
 				quiet: true
 			},
 			dist: { files: {
@@ -60,7 +61,7 @@ module.exports = function(grunt) {
 		watch: {
 			grunt: { files: ['Gruntfile.js'] },
 			copy: {
-				files: ['src/js/**','src/img/**','src/fonts/**'],
+				files: ['src/**'],
 				tasks: ['copy']
 			},
 			sass: {

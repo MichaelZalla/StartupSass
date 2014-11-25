@@ -20,5 +20,9 @@ bower_components
 # Sass files
 .sass-cache
 
+# Asset source files
+*.psd
+
 # Project build
 dist
+vendor

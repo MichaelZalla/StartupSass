@@ -1,8 +1,8 @@
 StartupSass
 ===========
 
-Small responsive site scaffolding built on Foundation Sass.
+Small Sass scaffolding for building responsive websites built with Foundation.
 
 @TODO:
 
-	- Set up compilation to 'build' directory in Grunt task
+	- Scaffold out Sass project directories
