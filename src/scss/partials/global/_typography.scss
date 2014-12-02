@@ -1,0 +1,168 @@
+/**
+ * @file _typography.scss
+ * @author Michael Zalla
+ * @date 12-01-2014
+ * 
+ * Sets up the base typographic styles for content elements such as copy,
+ * headings, and subheadings, as well as some typographic decorator classes.
+ */
+
+$ss-type-default-font-family: "Open Sans";
+
+/* Typographic placeholder selectors */
+
+%center {
+	display: block;
+	@include same(margin-left, margin-right, auto);
+	text-align: center;
+}
+
+%copy {
+	display: block;
+	margin-top: $ss-type-copy-point-size * 1.5;
+	@include typeset($ss-type-copy-point-size, 1.5, 0.0em, $ss-type-default-font-family);
+}
+
+%hide-text {
+	text-indent: -9999;
+	white-space: nowrap;
+	color: transparent;
+	@include vendorize("outline", none);
+}
+
+%light { color: white; }
+
+/* Base typographic styles */
+
+body {
+	
+	// Font smoothing for supporting browsers
+	@include vendorize("font-smoothing", antialiased);
+	-moz-osx-font-smoothing: grayscale;
+	
+	color: $color-type-base;
+}
+
+/* Mobile base point size */
+@media #{$small-only} { body {
+	@include typeset(
+		$ss-type-mobile-base-point-size,
+		$ss-type-base-line-height, 0.0em,
+		$ss-type-default-font-family,
+		$font-weight-regular );
+}}
+
+/* Desktop base point size */
+@media #{$medium-up} { body {
+	@include typeset(
+		$ss-type-desktop-base-point-size,
+		$ss-type-base-line-height, 0.0em,
+		$ss-type-default-font-family,
+		$font-weight-regular );
+}}
+
+.center { @extend %center; }
+
+.light { @extend %light; }
+
+/* Copy */
+
+p, span, .copy, a {
+	&, &:before, &:after {
+		@extend %copy;
+	}
+}
+
+a, a:link, a:visited, a:hover, a:active {
+	text-decoration: none;
+	color: #0088cc;
+}
+
+/* Display type */
+
+h1, h2, h3, h4, h5, h6 {
+	&, &:before, &:after {
+		@extend %copy;
+		font-weight: $font-weight-light;
+	}
+}
+
+h1, h1:before, h1:after { @include same(font-size, margin-top, 2.44rem); }
+h2, h2:before, h2:after { @include same(font-size, margin-top, 2.15rem); }
+h3, h3:before, h3:after { @include same(font-size, margin-top, 1.84rem); }
+h4, h4:before, h4:after { @include same(font-size, margin-top, 1.40rem); }
+h5, h5:before, h5:after { @include same(font-size, margin-top, 1.00rem); }
+h6, h6:before, h6:after { @include same(font-size, margin-top, 0.84rem); }
+
+h4, h4:before, h4:after {
+	font-weight: $font-weight-semibold;
+}
+
+h5, h5:before, h5:after {
+	letter-spacing: 0.065em;
+	font-weight: $font-weight-bold;
+	text-transform: uppercase;
+}
+
+h6, h6:before, h6:after {
+	letter-spacing: 0.115em;
+	font-weight: $font-weight-bold;
+	text-transform: uppercase;
+}
+
+/* Headings */
+
+.heading {
+	
+	display: block;
+	text-transform: uppercase;
+	
+	@include typeset(1.85rem, 1.35, 0.0em,
+		$ss-type-default-font-family,
+		$font-weight-light);
+
+}
+
+.subheading {
+	
+	display: block;
+	text-transform: uppercase;
+	
+	@include typeset(1.15rem, 1.35, 0.0em,
+		$ss-type-default-font-family,
+		$font-weight-bold);
+
+}
+
+/* Labels */
+
+.label {
+	margin-top: 0.67rem;
+	text-transform: uppercase;
+	// text-rendering: geometricPrecision;
+	@include typeset(0.8rem, 1.5, 0.15em,
+		$ss-type-default-font-family,
+		$font-weight-semibold);
+}
+
+/* Callouts */
+
+.callout,
+.callout:before,
+.callout:after { font-size: 1.45rem; }
+
+/* Quotes */
+
+.quotes,
+.quotes:before,
+.quotes:after { font-style: italic; }
+
+.quotes:before { margin-right: 2px; content: "\201C"; }
+.quotes:after  {  margin-left: 2px; content: "\201C"; }
+
+/* Section typography */
+
+header.dark, section.dark, footer.dark {
+	@extend %light;
+	background-color: rgba(0,0,0,0.92);
+}

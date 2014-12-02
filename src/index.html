@@ -1,23 +1,105 @@
 <!doctype html>
 <html lang="en">
 <head>
+
 	<meta charset="utf-8">
 	<title>Startup Sass</title>
-
+	
+	<!-- Site metadata -->
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<meta http-equiv="X-UI-Compatible" content="IE=edge,chrome=1"><!--http://stackoverflow.com/questions/22059060/-->
+	<meta name="description" content="Small responsive site scaffolding built on Foundation Sass">
+	<meta name="author" content="Michael Zalla (https://github.com/MichaelZalla)">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	
+	<!-- Site favicon -->
 	<!--[if IE]><link rel="shortcut icon" href="favicon.ico" /><![endif]-->
 	<link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32" />
 	<link rel="icon" type="image/png" href="favicon-16.png" sizes="16x16" />
 	
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="css/main.min.css?v=0.0.1">
+
 </head>
 <body>
 	
-	<h1>Startup Sass v0.0.1</h1>
+	<div class="view-content">
+		
+		<!-- Site header -->
+		<header class="fixed dark">
+			<div class="container">
+				<div class="content">
+					<!-- Branding -->
+					<div class="left">
+						<a href="#" id="logo">
+							<span class="label">Startup Sass</span>
+							<span class="label" style="letter-spacing:0.035em;">v0.0.1</span>
+						</a>
+					</div>
+					<!-- Responsive navigation -->
+					<div class="right">
+						<!-- Mobile menu -->
+						<section class="ss-nav-menu fullscreen">
+							<div class="container">
+								<div class="content dark">
+									<ul>
+										<li><a href="#item1"><span class="label">item 1</span></a></li>
+										<li><a href="#item2"><span class="label">item 2</span></a></li>
+										<li><a href="#item3"><span class="label">item 3</span></a></li>
+									</ul>
+								</div>
+							</div>
+						</section>
+						<div class="ss-nav-menu-toggle"></div>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<!-- Fullscreen page section -->
+		<section id="section1" class="fullscreen">
+			<div class="container">
+				<div class="content">
+
+					<div class="row">
+						<h1 class="center" style="margin:0;">Startup Sass</h1>
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+		<!-- Dark page section -->
+		<section id="section2" class="fullscreen dark">
+			<div class="container">
+				<div class="content">
+
+					<div class="row">
+						<span class="center">This is a span element.</span>
+						<a href="#" class="center">This is an anchor element.</a>
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+	</div>
 
 	<!-- Scripts -->
+	
 	<script src="js/vendor/jquery/jquery.min.js"></script>
 	<script src="js/vendor/jquery/plugins/jquery-waypoints.min.js"></script>
 	<script src="js/vendor/jquery/plugins/jquery-scrollIt.min.js"></script>
 	<script src="js/vendor/foundation/foundation.min.js"></script>
+	<script>$(document).foundation();</script>
+	
+	<script>
+		$(function() {
+			$('.ss-nav-menu-toggle').on('mouseup', function(e) {
+				$('.ss-nav-menu').toggleClass('expanded');
+			});
+		});
+	</script>
 
 </body>
 

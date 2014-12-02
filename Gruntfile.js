@@ -48,13 +48,16 @@ module.exports = function(grunt) {
 		sass: {
 			options: {
 				// Helps Sass task resolve Foundation dependencies
-				loadPath: 'bower_components/foundation/scss',
+				loadPath: [
+					'bower_components/foundation/scss',
+					'bower_components/sass-burger'
+				],
 				style: 'compressed',
 				quiet: true
 			},
 			dist: { files: {
 				// main.css
-				'dist/css/main.css': 'src/scss/main.scss'
+				'dist/css/main.min.css': 'src/scss/main.scss'
 			}}
 		},
 

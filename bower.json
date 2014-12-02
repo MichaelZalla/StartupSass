@@ -28,6 +28,7 @@
     "jquery": "~2.1.1",
     "jquery-waypoints": "~2.0.5",
     "foundation": "~5.4.7",
+    "sass-burger": "~1.1.1",
     "ScrollIt": "*"
   },
   "resolutions": {

@@ -1,0 +1,165 @@
+/**
+ * @file _header.scss
+ * @author Michael Zalla
+ * @date 12-01-2014
+ *
+ * Contains styles for the site header and navigation.
+ */
+
+/* Header styles */
+
+.view-content header {
+	
+	display: table;
+	width: 100%;
+	overflow: visible !important;
+	background-color: $color-spot-red;
+	
+	@include vendorize("transition", background-color 0.125s ease-in);
+
+	.container,
+	.content,
+	.content.left,
+	.content.right { height: inherit; }
+
+	.container {
+		display: table-cell; 
+		vertical-align: middle;
+	}
+
+	.content {
+		padding-top: 8px;
+		padding-bottom: 8px;
+	}
+
+	/* Branding */
+
+	.left #logo {
+		
+		display: inline-block;
+		margin: 0 !important;
+		color: white;
+		@include background("../img/logo_2x.png", auto 100%, left center);
+		
+		.label {
+			display: inline-block;
+			vertical-align: middle;
+			&:first-of-type { padding-left: 8px; }
+		}
+
+	}
+
+	/* Responsive menu navigation */
+
+	.ss-nav-menu {
+		
+		background-color: $color-spot-red;
+		
+		@include vendorize("transition", left 0.18s ease-in-out);
+		
+		a { margin-top: 0px; color: white !important; }
+		
+		span { display: inline; }
+
+	}
+
+}
+
+/* Fixed-position header */
+
+.view-content header.fixed {
+	position: fixed;
+	top: 0;
+	float: left;
+	width: 100%;
+	z-index: 999;
+}
+
+/* Mobile styles */
+
+@media #{$small-only} {
+
+.view-content header {
+
+	height: $ss-mobile-header-height;
+
+	.left #logo {
+		@include same(width, height, $ss-mobile-header-height - (8px * 2));
+		.label { display: none; }
+	}
+
+	/* Hamburger menu container */
+
+	.right { margin-top: 18px; }
+
+	.ss-nav-menu {
+
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		height: 100vh;
+		z-index: -1;
+
+		.content {
+			margin: 0px auto !important;
+			width: 100vw !important;
+			height: auto !important;
+		}
+
+		li {
+			display: block;
+			padding-top: 28px;
+			padding-bottom: 28px;
+			// Account for fixed page header
+			&:first-child { margin-top: $ss-mobile-header-height / 2; }
+			&:not(:last-child) { border-bottom: 1px solid white; }
+		}
+
+		.label { padding-left: 16px; }
+
+	}
+
+	.ss-nav-menu-toggle {
+		overflow: visible;
+		@include burger(30px, 3px, 6px, rgba(white, 0.65));
+	}
+
+	.ss-nav-menu:not(.expanded) {
+		left: -100%;
+		& ~ .ss-nav-menu-toggle,
+		& ~ .ss-nav-menu-toggle:before,
+		& ~ .ss-nav-menu-toggle:after { background-color: white; }
+	}
+
+}
+
+}
+
+/* Desktop styles */
+
+@media #{$medium-up} {
+
+.view-content header {
+
+	height: $ss-desktop-header-height;
+
+	.left #logo {
+		@include same(padding-left, height, $ss-desktop-header-height - (8px * 2));
+		.label { margin-top: 15px; }
+	}
+
+	.ss-nav-menu-toggle { display: none; }
+	.ss-nav-menu { margin-top: 9px; }
+	.ss-nav-menu .content {
+
+		margin: 0;
+		padding: 0;
+
+		li { display: inline-block; }
+		li:not(:first-child) { margin-left: 32px; }
+	
+	}
+	
+}
+
+}

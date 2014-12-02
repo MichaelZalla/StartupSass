@@ -7,32 +7,28 @@
  * that are included with the StartupSass style framework.
  *
  * Dependencies:
- *   - Foundation (~5.4.3)
+ *   - 'foundation' (~5.4.3)
+ *   - 'sass-burger' (~1.1.1)
  */
 
-@charset "UTF-8";
+@charset "utf-8";
 
 /* Foundation by ZURB – foundation.zurb.com (Licensed under MIT Open Source) */
 
-// Import Foundation components as required
+/* Foundation components */
+
 @import "normalize";
 @import "foundation/components/grid";
-@import "foundation/components/type";
-@import "foundation/components/dropdown";
-@import "foundation/components/top-bar";
 
 /* Modules */
 
 @import "modules/config";
+@import "modules/colors";
 
 /* Mixins */
 
-// Mixin library (Git submodule)
-@import "modules/mixins/sass-mixins/bundle";
-
-// Add custom mixins
-//@import "modules/mixins/fooMixin";
-//@import "modules/mixins/barMixin";
+@import "burger";
+@import "modules/mixins/SassMixins/bundle";
 
 /* Global Partials */
 
@@ -40,4 +36,10 @@
 @import "partials/global/typography";
 @import "partials/global/layout";
 
+@import "partials/global/components/header";
+// @import "partials/global/components/footer";
+
 /* View Partials */
+
+// @import "partials/views/fooView";
+// @import "partials/views/components/fooComponent";

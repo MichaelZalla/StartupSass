@@ -1,0 +1,39 @@
+/**
+ * @file _fonts.scss
+ * @author Michael Zalla
+ * @date 12-01-2014
+ *
+ * Imports a collection of font files and associates each with a font-
+ * family, font-style, and font-weight. These properties can be used
+ * together to target specific fonts for CSS selectors and custom classes.
+ * Note that this module relies on $font-weight variables defined in
+ * the 'fontface' mixin module.
+ */
+
+/* Open Sans (Normal) */
+
+@include fontface("Open Sans", "../fonts/OpenSans/OpenSans-Light",
+	$font-weight-light, normal);
+
+@include fontface("Open Sans", "../fonts/OpenSans/OpenSans-Regular",
+	$font-weight-regular, normal);
+
+@include fontface("Open Sans", "../fonts/OpenSans/OpenSans-Semibold",
+	$font-weight-semibold, normal);
+
+@include fontface("Open Sans", "../fonts/OpenSans/OpenSans-Bold",
+	$font-weight-bold, normal);
+
+/* Open Sans (Italic) */
+
+@include fontface("Open Sans", "../fonts/OpenSans/OpenSans-LightItalic",
+	$font-weight-light, italic);
+
+@include fontface("Open Sans", "../fonts/OpenSans/OpenSans-RegularItalic",
+	$font-weight-regular, italic);
+
+@include fontface("Open Sans", "../fonts/OpenSans/OpenSans-SemiboldItalic",
+	$font-weight-semibold, italic);
+
+@include fontface("Open Sans", "../fonts/OpenSans/OpenSans-BoldItalic",
+	$font-weight-bold, italic);
