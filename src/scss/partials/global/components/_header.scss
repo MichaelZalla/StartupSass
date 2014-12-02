@@ -13,7 +13,7 @@
 	display: table;
 	width: 100%;
 	overflow: visible !important;
-	background-color: $color-spot-red;
+	background-color: $color-spot-1;
 	
 	@include vendorize("transition", background-color 0.125s ease-in);
 
@@ -36,13 +36,11 @@
 
 	.left #logo {
 		
-		display: inline-block;
 		margin: 0 !important;
 		color: white;
-		@include background("../img/logo_2x.png", auto 100%, left center);
+		@include background("../img/logo-white_2x.png", auto 100%, left center);
 		
 		.label {
-			display: inline-block;
 			vertical-align: middle;
 			&:first-of-type { padding-left: 8px; }
 		}
@@ -53,11 +51,11 @@
 
 	.ss-nav-menu {
 		
-		background-color: $color-spot-red;
+		background-color: $color-spot-1;
 		
 		@include vendorize("transition", left 0.18s ease-in-out);
 		
-		a { margin-top: 0px; color: white !important; }
+		a { margin-top: 0px; }
 		
 		span { display: inline; }
 
@@ -115,6 +113,8 @@
 			&:not(:last-child) { border-bottom: 1px solid white; }
 		}
 
+		a { color: white; }
+
 		.label { padding-left: 16px; }
 
 	}
@@ -149,14 +149,32 @@
 	}
 
 	.ss-nav-menu-toggle { display: none; }
-	.ss-nav-menu { margin-top: 9px; }
+	.ss-nav-menu { margin-top: 6px; }
 	.ss-nav-menu .content {
 
 		margin: 0;
 		padding: 0;
 
-		li { display: inline-block; }
-		li:not(:first-child) { margin-left: 32px; }
+		li {
+			
+			display: inline-block;
+			padding: 0px 20px 5px;
+			border: 2px solid $color-spot-1;
+			border-radius: 18px;
+			cursor: pointer;
+
+			@include vendorize("transition", 0.18s border-color ease-in-out);
+			@include mouseover(border-color, $color-spot-2);
+
+			a {
+				color: rgba(white, 0.84);
+				@include vendorize("transition", 0.35s color ease-in-out);
+			}
+
+		}
+
+		li:not(:first-child) { margin-left: 20px; }
+		li:hover a { color: white; }
 	
 	}
 	

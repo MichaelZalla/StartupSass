@@ -1,0 +1,104 @@
+/**
+ * @file _footer.scss
+ * @author Michael Zalla
+ * @date 12-01-2014
+ *
+ * Contains styles for the site footer and social links.
+ */
+
+/* Footer styles */
+
+.view-content footer {
+
+	.content { padding: 32px 0; }
+
+	/* Branding */
+
+	// .ss-footer-branding { min-height: 32px; }
+
+	.ss-footer-branding a {
+		margin-top: 4px;
+		@include same(width, height, 28px);
+		@include background("../img/logo-spot_2x.png");
+		@extend %grayscale;
+	}
+
+	/* Navigation */
+
+	.ss-footer-navigation {
+
+		li a {
+			color: $color-type-default;
+			@include vendorize("transition", opacity 0.14s ease-in-out);
+			@include mouseout(opacity, 0.5);
+		}
+
+		li:not(:first-child) a { margin-top: 1.125rem; }
+
+	}
+
+	/* Social */
+
+	.ss-footer-social ul {
+
+		width: 100%;
+		overflow-x: hidden;
+		text-align: center;
+
+		li { display: inline-block; }
+
+		a {
+			margin: 0;
+			opacity: 0.65;
+			@include same(width, height, 38px);
+			@include vendorize("transition", 0.18s opacity ease-in-out);
+			@include mouseout(opacity, 0.24);
+		}
+
+		a p { @extend %hide-text; }
+
+		a.facebook 	{ @include background("../img/social-icon-128x128-facebook.png"); }
+		a.twitter 	{ @include background("../img/social-icon-128x128-twitter.png"); }
+		a.instagram { @include background("../img/social-icon-128x128-instagram.png"); }
+
+		li:not(:first-child) { margin-left: 14px; }
+
+	}
+
+}
+
+.view-content footer:not(.dark) .content { border-top: 1px solid $color-gray-4; }
+
+// .view-content footer.dark { background-color: rgba(0,0,0,0.92); }
+
+/* Mobile styles */
+
+@media #{$small-only} {
+
+.view-content footer { }
+
+	.ss-footer-branding,
+	.ss-footer-navigation,
+	.ss-footer-social { text-align: center; }
+
+	.ss-footer-branding a { @include same(width, height, 38px); }
+
+	.ss-footer-navigation > .row { margin: 0; }
+	.ss-footer-navigation .column { margin-top: 0.875rem; }
+	.ss-footer-navigation li a { margin-top: 0.875rem; }
+
+	.ss-footer-social { margin-top: 32px; }
+
+}
+
+/* Desktop styles */
+
+@media #{$medium-up} {
+
+.view-content footer {
+
+	.content { padding-bottom: 45px; }
+
+}
+
+}

@@ -18,13 +18,13 @@ $ss-type-default-font-family: "Open Sans";
 }
 
 %copy {
-	display: block;
+	display: inline-block;
 	margin-top: $ss-type-copy-point-size * 1.5;
 	@include typeset($ss-type-copy-point-size, 1.5, 0.0em, $ss-type-default-font-family);
 }
 
 %hide-text {
-	text-indent: -9999;
+	text-indent: -9999px;
 	white-space: nowrap;
 	color: transparent;
 	@include vendorize("outline", none);
@@ -40,7 +40,7 @@ body {
 	@include vendorize("font-smoothing", antialiased);
 	-moz-osx-font-smoothing: grayscale;
 	
-	color: $color-type-base;
+	color: $color-type-default;
 }
 
 /* Mobile base point size */
@@ -67,7 +67,7 @@ body {
 
 /* Copy */
 
-p, span, .copy, a {
+p, span, a, .copy {
 	&, &:before, &:after {
 		@extend %copy;
 	}
@@ -75,7 +75,7 @@ p, span, .copy, a {
 
 a, a:link, a:visited, a:hover, a:active {
 	text-decoration: none;
-	color: #0088cc;
+	color: $color-anchor-default;
 }
 
 /* Display type */
@@ -162,7 +162,7 @@ h6, h6:before, h6:after {
 
 /* Section typography */
 
-header.dark, section.dark, footer.dark {
+.dark {
 	@extend %light;
-	background-color: rgba(0,0,0,0.92);
+	p, span, a, .copy { color: white !important; }
 }
