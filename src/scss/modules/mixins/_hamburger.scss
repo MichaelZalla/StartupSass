@@ -1,0 +1,36 @@
+/**
+ * @file _hamburger.scss
+ * @author Michael Zalla
+ * @date 12-03-2014
+ *
+ * Contains a Sass mixin that transforms a single container element
+ * into a responsive hambuger-style button for mobile site navigation.
+ */
+
+@mixin hamburger($size: 32px,
+				 $thickness: 3px,
+				 $fillColor: white) {
+	
+	$spacing: ($size / 2) - ($thickness * 1.5);
+
+	position: relative;
+	overflow: visible;
+	margin-top: $spacing - 1px;
+	margin-bottom: $spacing;
+
+	&, &:before, &:after {
+		display: block;
+		width: $size;
+		height: $thickness;
+		background-color: $fillColor;
+	}
+
+	&:before, &:after {
+		content: " ";
+		position: absolute;
+	}
+
+	&:before { top: $spacing * -1 + 1px; }
+	&:after { top: $spacing }
+
+}

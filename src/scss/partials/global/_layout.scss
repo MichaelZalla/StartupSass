@@ -109,21 +109,28 @@ button {
 
 /* Mobile styles */
 
-@media #{$small-only} {
+@media #{ $small-only } {
 
 .view-content {
 
-	& > header .content,
+	& > header  .content,
 	& > section .content,
-	& > footer .content {
-		max-width: $ss-mobile-content-max-width;
-		padding-left: 	$ss-mobile-content-side-padding;
-		padding-right: 	$ss-mobile-content-side-padding;
+	& > footer  .content { max-width: $ss-mobile-content-max-width; }
+
+	& > header .content {
+		padding-left: 	$ss-mobile-header-side-padding;
+		padding-right: 	$ss-mobile-header-side-padding;
 	}
 
 	& > section .content {
 		margin-top: 	$ss-mobile-section-top-margin;
 		margin-bottom: 	$ss-mobile-section-bottom-margin;
+	}
+
+	& > section .content,
+	& > footer  .content {
+		padding-left: 	$ss-mobile-content-side-padding;
+		padding-right: 	$ss-mobile-content-side-padding;
 	}
 
 	// Account for fixed page header
@@ -137,20 +144,26 @@ button {
 
 /* Desktop styles */
 
-@media #{$medium-up} {
+@media #{ $medium-up } {
 
 .view-content {
 
-	& > header .content,
+	& > header  .content,
 	& > section .content,
-	& > footer .content { max-width: $ss-desktop-content-max-width; }
+	& > footer  .content { max-width: $ss-desktop-content-max-width; }
+
+	& > header .content {
+		padding-left: 	$ss-desktop-header-side-padding;
+		padding-right: 	$ss-desktop-header-side-padding;
+	}
 
 	& > section .content {
 		margin-top: 	$ss-desktop-section-top-margin;
 		margin-bottom: 	$ss-desktop-section-bottom-margin;
 		padding-left: 	$ss-desktop-content-side-padding;
-		padding-right: 	$ss-desktop-content-side-padding;	
+		padding-right: 	$ss-desktop-content-side-padding;
 	}
+
 	// Account for fixed page header
 	header.fixed ~ section .content {
 		margin-top: $ss-desktop-section-top-margin + $ss-desktop-header-height;

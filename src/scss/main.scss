@@ -7,8 +7,7 @@
  * that are included with the StartupSass style framework.
  *
  * Dependencies:
- *   - 'foundation' (~5.4.3)
- *   - 'sass-burger' (~1.1.1)
+ *   - Foundation Grid (~5.4.3)
  */
 
 @charset "utf-8";
@@ -27,8 +26,9 @@
 
 /* Mixins */
 
-@import "burger";
+// @import "burger";
 @import "modules/mixins/SassMixins/bundle";
+@import "modules/mixins/hamburger";
 
 /* Global Partials */
 

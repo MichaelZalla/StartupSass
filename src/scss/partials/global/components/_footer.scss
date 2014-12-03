@@ -10,16 +10,17 @@
 
 .view-content footer {
 
-	.content { padding: 32px 0; }
+	.content { padding: 32px 0px; }
 
 	/* Branding */
 
-	// .ss-footer-branding { min-height: 32px; }
-
+	$brandmark-opacity: 0.84;
 	.ss-footer-branding a {
 		margin-top: 4px;
-		@include same(width, height, 28px);
-		@include background("../img/logo-spot_2x.png");
+		border: 2px solid rgba(black, $brandmark-opacity);
+		opacity: $brandmark-opacity;
+		@include same(width, height, 48px);
+		@include background("../img/icon-black-flattened.svg", 62%);
 		@extend %grayscale;
 	}
 
@@ -49,10 +50,9 @@
 
 		a {
 			margin: 0;
-			opacity: 0.65;
+			opacity: 0.76;
 			@include same(width, height, 38px);
 			@include vendorize("transition", 0.18s opacity ease-in-out);
-			@include mouseout(opacity, 0.24);
 		}
 
 		a p { @extend %hide-text; }
@@ -69,19 +69,15 @@
 
 .view-content footer:not(.dark) .content { border-top: 1px solid $color-gray-4; }
 
-// .view-content footer.dark { background-color: rgba(0,0,0,0.92); }
-
 /* Mobile styles */
 
-@media #{$small-only} {
+@media #{ $small-only } {
 
-.view-content footer { }
+.view-content footer {
 
 	.ss-footer-branding,
 	.ss-footer-navigation,
 	.ss-footer-social { text-align: center; }
-
-	.ss-footer-branding a { @include same(width, height, 38px); }
 
 	.ss-footer-navigation > .row { margin: 0; }
 	.ss-footer-navigation .column { margin-top: 0.875rem; }
@@ -91,14 +87,16 @@
 
 }
 
+}
+
 /* Desktop styles */
 
-@media #{$medium-up} {
+@media #{ $medium-up } {
 
 .view-content footer {
 
 	.content { padding-bottom: 45px; }
-
+	
 }
 
 }

@@ -12,19 +12,21 @@ module.exports = function(grunt) {
 					// a location in 'dist' relative to own directory
 					{ expand:true, cwd:'src/', src:['*.html','*.png','*.ico'], dest:'dist' },
 					{ expand:true, cwd:'src/js/', src:['**'], dest:'dist/js' },
-					{ expand:true, cwd:'src/img/', src:['*.png','*.jpg','*.jpeg'], dest:'dist/img' },
+					{ expand:true, cwd:'src/img/', src:['*.svg','*.png','*.jpg','*.jpeg'], dest:'dist/img' },
 					{ expand:true, cwd:'src/fonts/', src:['**'], dest:'dist/fonts' }
 				]
 			}
 		},
 
 		concat: {
+			/*
 			foundation: { files: {
 				// foundation.min.js
 				'dist/js/vendor/foundation/foundation.min.js':
 					//@TODO Replace with module-specific concat for smaller size
 					['bower_components/foundation/js/foundation.min.js']
 			}},
+			*/
 			jquery: { files: {
 				// jquery.min.js
 				'dist/js/vendor/jquery/jquery.min.js':
@@ -56,8 +58,8 @@ module.exports = function(grunt) {
 				quiet: true
 			},
 			dist: { files: {
-				// main.css
-				'dist/css/main.min.css': 'src/scss/main.scss'
+				// startup-sass.min.css
+				'dist/css/startup-sass.min.css': 'src/scss/main.scss'
 			}}
 		},
 

@@ -34,7 +34,7 @@ $ss-type-default-font-family: "Open Sans";
 
 /* Base typographic styles */
 
-body {
+html {
 	
 	// Font smoothing for supporting browsers
 	@include vendorize("font-smoothing", antialiased);
@@ -44,7 +44,7 @@ body {
 }
 
 /* Mobile base point size */
-@media #{$small-only} { body {
+@media #{ $small-only } { html {
 	@include typeset(
 		$ss-type-mobile-base-point-size,
 		$ss-type-base-line-height, 0.0em,
@@ -53,7 +53,7 @@ body {
 }}
 
 /* Desktop base point size */
-@media #{$medium-up} { body {
+@media #{ $medium-up } { html {
 	@include typeset(
 		$ss-type-desktop-base-point-size,
 		$ss-type-base-line-height, 0.0em,
@@ -112,7 +112,9 @@ h6, h6:before, h6:after {
 
 /* Headings */
 
-.heading {
+.heading
+.heading:before,
+.heading:after {
 	
 	display: block;
 	text-transform: uppercase;
@@ -123,7 +125,11 @@ h6, h6:before, h6:after {
 
 }
 
-.subheading {
+/* Subheadings */
+
+.subheading
+.subheading:before,
+.subheading:after {
 	
 	display: block;
 	text-transform: uppercase;
@@ -139,8 +145,7 @@ h6, h6:before, h6:after {
 .label {
 	margin-top: 0.67rem;
 	text-transform: uppercase;
-	// text-rendering: geometricPrecision;
-	@include typeset(0.8rem, 1.5, 0.15em,
+	@include typeset(0.8rem, 1.5, 0.125em,
 		$ss-type-default-font-family,
 		$font-weight-semibold);
 }
@@ -149,7 +154,11 @@ h6, h6:before, h6:after {
 
 .callout,
 .callout:before,
-.callout:after { font-size: 1.45rem; }
+.callout:after {
+	display: block;
+	font-size: 1.45rem;
+	font-weight: $font-weight-light;
+}
 
 /* Quotes */
 

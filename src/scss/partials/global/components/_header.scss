@@ -34,11 +34,11 @@
 
 	/* Branding */
 
-	.left #logo {
+	#logo {
 		
 		margin: 0 !important;
 		color: white;
-		@include background("../img/logo-white_2x.png", auto 100%, left center);
+		@include background("../img/icon-white-flattened.svg", auto 75%, left center);
 		
 		.label {
 			vertical-align: middle;
@@ -61,6 +61,8 @@
 
 	}
 
+	.indicator { display: none; }
+
 }
 
 /* Fixed-position header */
@@ -75,20 +77,21 @@
 
 /* Mobile styles */
 
-@media #{$small-only} {
+@media #{ $small-only } {
 
 .view-content header {
 
 	height: $ss-mobile-header-height;
 
-	.left #logo {
-		@include same(width, height, $ss-mobile-header-height - (8px * 2));
-		.label { display: none; }
-	}
+	#logo { @include same(width, height, $ss-mobile-header-height - (8px * 2)); }
+	#logo .label { display: none; }
 
 	/* Hamburger menu container */
 
-	.right { margin-top: 18px; }
+	.right {
+		margin-top: 18px;
+		cursor: pointer;
+	}
 
 	.ss-nav-menu {
 
@@ -115,15 +118,23 @@
 
 		a { color: white; }
 
-		.label { padding-left: 16px; }
+		.label {
+			padding-left: 16px;
+			font-size: 1.35rem;
+		}
 
 	}
 
-	.ss-nav-menu-toggle {
-		overflow: visible;
-		@include burger(30px, 3px, 6px, rgba(white, 0.65));
-	}
+	/* Hamburger menu */
 
+	.ss-nav-menu-toggle { @include hamburger(30px, 3px, rgba(white, 0.65)); }
+	
+	.ss-nav-menu-toggle,
+	.ss-nav-menu-toggle:before,
+	.ss-nav-menu-toggle:after {
+		@include vendorize("transition", background-color 0.18s ease-in-out);
+	}
+	
 	.ss-nav-menu:not(.expanded) {
 		left: -100%;
 		& ~ .ss-nav-menu-toggle,
@@ -135,18 +146,30 @@
 
 }
 
-/* Desktop styles */
+/* Tablet styles */
 
-@media #{$medium-up} {
+@media #{ $medium-only } {
 
 .view-content header {
 
+	#logo .label { display: none; }
+
+}
+
+}
+
+/* Desktop styles */
+
+@media #{ $medium-up } {
+
+.view-content header {
+
+	$content-height: $ss-desktop-header-height - (8px * 2);
+
 	height: $ss-desktop-header-height;
 
-	.left #logo {
-		@include same(padding-left, height, $ss-desktop-header-height - (8px * 2));
-		.label { margin-top: 15px; }
-	}
+	#logo { @include same(padding-left, height, $content-height); }
+	#logo .label { margin-top: 15px; }
 
 	.ss-nav-menu-toggle { display: none; }
 	.ss-nav-menu { margin-top: 6px; }
@@ -177,7 +200,35 @@
 		li:hover a { color: white; }
 	
 	}
+
+	$indicator-height: 2px;
+
+	.indicator {
+		position: absolute;
+		bottom: $indicator-height;
+		left: 50%;
+		display: block;
+		overflow: visible;
+		@include same(width, height, 0px);
+	}
+
+	.indicator:before,
+	.indicator:after {
+		content: "";
+		position: absolute;
+		display: block;
+		width: 0vw;
+		height: $indicator-height;
+		background-color: $color-spot-2;
+		@include vendorize("transition", width 0.35s ease-in);
+	}
+
+	.indicator:before { left: 0; }
+	.indicator:after { right: 0; }
 	
 }
+
+.view-content header:hover .indicator:before,
+.view-content header:hover .indicator:after { width: 50vw; }
 
 }

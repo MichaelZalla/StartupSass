@@ -1,3 +1,4 @@
+<!-- StartupSass v0.0.1 -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,12 +14,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no">
 	
 	<!-- Site favicon -->
-	<!--[if IE]><link rel="shortcut icon" href="favicon.ico" /><![endif]-->
-	<link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32" />
-	<link rel="icon" type="image/png" href="favicon-16.png" sizes="16x16" />
+	<!--[if IE]><link rel="shortcut icon" href="favicon.ico?v=0.0.1" /><![endif]-->
+	<link rel="icon" type="image/png" href="favicon-32.png?v=0.0.1" sizes="32x32" />
+	<link rel="icon" type="image/png" href="favicon-16.png?v=0.0.1" sizes="16x16" />
 	
 	<!-- Stylesheets -->
-	<link rel="stylesheet" href="css/main.min.css?v=0.0.1">
+	<link rel="stylesheet" href="css/startup-sass.min.css?v=0.0.1">
 
 </head>
 <body>
@@ -43,9 +44,10 @@
 							<div class="container">
 								<div class="content dark">
 									<ul>
-										<li><a href="#item1"><span class="label">item 1</span></a></li>
-										<li><a href="#item2"><span class="label">item 2</span></a></li>
-										<li><a href="#item3"><span class="label">item 3</span></a></li>
+										<li><a href="#"><span class="label">About&ensp;Us</span></a></li>
+										<li><a href="#"><span class="label">F.A.Q.</span></a></li>
+										<li><a href="#"><span class="label">Blog</span></a></li>
+										<li><a href="#"><span class="label">Connect</span></a></li>
 									</ul>
 								</div>
 							</div>
@@ -54,14 +56,27 @@
 					</div>
 				</div>
 			</div>
+			<div class="indicator"></div>
 		</header>
 
-		<!-- Fullscreen page section -->
+		<!-- Fullscreen content section -->
 		<section id="section1" class="fullscreen">
 			<div class="container">
 				<div class="content">
 					<div class="row">
-						<h1 class="center" style="margin:0;">Welcome to Startup Sass&nbsp;&hellip;</h1>
+						
+						<h1 class="center" style="margin:0;">Welcome to Startup Sass.</h1>
+						
+						<span class="center" style="opacity:0.35;">Now make something <i>awesome</i>&hellip;&nbsp;</span>
+
+						<!--
+						<span class="heading">This is a heading.</span>
+						
+						<span class="subheading">This is a subheading.</span>
+						
+						<span class="callout">This is a callout!</span>
+						-->
+
 					</div>
 				</div>
 			</div>
@@ -74,32 +89,34 @@
 					<div class="row">
 
 						<!-- Branding -->
-						<div class="column small-12 large-4 ss-footer-branding"><a href="#">&nbsp;</a></div>
+						<div class="column small-12 medium-4 ss-footer-branding"><a href="#"></a></div>
 
 						<!-- Navigation -->
-						<div class="column small-12 large-6 ss-footer-navigation">
+						<div class="column small-12 medium-8 large-6 ss-footer-navigation">
 
 							<div class="row">
 							
-								<div class="column small-12 large-4">
-									<span class="label">Product</span><ul>
-										<li><a href="#features">Features</a></li>
-										<li><a href="#benefits">Benefits</a></li>
-									</ul>
-								</div>
-							
-								<div class="column small-12 large-4">
-									<span class="label">Resources</span><ul>
-										<li><a href="/help">Help</a></li>
-										<li><a href="/conditions">Terms &amp; Conditions</a></li>
-										<li><a href="/contact">Contact Us</a></li>
-									</ul>
-								</div>
-							
-								<div class="column small-12 large-4">
+								<div class="column small-12 medium-4">
 									<span class="label">About</span><ul>
-										<li><a href="/blog">Blog</a></li>
-										<li><a href="/careers">Careers</a></li>
+										<li><a href="#">Our Story</a></li>
+										<li><a href="#">The Blog</a></li>
+										<li><a href="#">Careers</a></li>
+									</ul>
+								</div>
+
+								<div class="column small-12 medium-4">
+									<span class="label">Product</span><ul>
+										<li><a href="#">Overview</a></li>
+										<li><a href="#">Features</a></li>
+										<li><a href="#">Pricing</a></li>
+									</ul>
+								</div>
+							
+								<div class="column small-12 medium-4">
+									<span class="label">Resources</span><ul>
+										<li><a href="#">Help</a></li>
+										<li><a href="#">Terms &amp; Privacy</a></li>
+										<li><a href="#">Contact Us</a></li>
 									</ul>
 								</div>
 							
@@ -108,13 +125,15 @@
 						</div>
 
 						<!-- Social -->
-						<div class="column small-12 large-2 ss-footer-social">
+						<!--
+						<div class="column small-12 medium-2 ss-footer-social">
 							<ul>
 								<li><a href="#" class="facebook" alt="Facebook"><p>Facebook</p></a></li>
 								<li><a href="#" class="twitter" alt="Twitter"><p>Twitter</p></a></li>
 								<li><a href="#" class="instagram" alt="Instagram"><p>Instagram</p></a></li>
 							</ul>
 						</div>
+						-->
 
 					</div>
 				</div>
@@ -123,17 +142,16 @@
 
 	</div>
 
-	<!-- Scripts -->
+	<!-- Dependencies -->
 	
 	<script src="js/vendor/jquery/jquery.min.js"></script>
 	<script src="js/vendor/jquery/plugins/jquery-waypoints.min.js"></script>
 	<script src="js/vendor/jquery/plugins/jquery-scrollIt.min.js"></script>
-	<script src="js/vendor/foundation/foundation.min.js"></script>
-	<script>$(document).foundation();</script>
-	
 	<script>
 		$(function() {
-			$('.ss-nav-menu-toggle').on('mouseup', function(e) {
+			// Set up an event listener for menu screen transitions
+			// Parent element wraps the hamburger menu's pseudo-elements
+			$('.ss-nav-menu-toggle').parent().on('mouseup', function(e) {
 				$('.ss-nav-menu').toggleClass('expanded');
 			});
 		});
