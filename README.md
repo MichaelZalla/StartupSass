@@ -4,6 +4,10 @@ StartupSass is a small, responsive scaffolding designed to accelerate your web p
 
 StartupSass uses ZURB Foundation's Normalize and Grid modules to support layouts that are consistent and responsive across browser environments. The rest of the framework is written from scratch, giving you complete freedom to extend or remove style information, or simply write your styles on top of the existing framework.
 
+### @TODO
+
+- [ ] Write customization walkthroughs
+
 ### Getting Up and Running
 	
 ##### Dependencies
@@ -42,9 +46,9 @@ StartupSass uses ZURB Foundation's Normalize and Grid modules to support layouts
 	
 	```bash
 	vi README.md
-	...
+	# ...
 	vi package.json
-	...
+	# ...
 	```
 
 6. Fetch frontend dependencies and build to `dist` directory:
@@ -56,7 +60,7 @@ StartupSass uses ZURB Foundation's Normalize and Grid modules to support layouts
 7. Start a live-reload server and view the site in-browser:
 	
 	```bash
-	// in a separate console session
+	# in a separate console session
 	barkeep -p 8000
 	```
 
@@ -74,7 +78,7 @@ StartupSass comes with several pre-configured tasks that can be run from the com
 
 - **`watch`**: Auto-compiles Sass and auto-copies images and other assets from `src` when changes occur. (**blocking**)
 
-The `grunt build` command will run the `bower:install`, `concat`, `copy`, and `sass` tasks in order.
+**Note**: The `grunt build` command will run the `bower:install`, `concat`, `copy`, and `sass` tasks, in that order.
 
 ### Customizing Your Project
 
