@@ -4,62 +4,61 @@ StartupSass is a small, responsive scaffolding designed to accelerate your web p
 
 StartupSass uses ZURB Foundation's Normalize and Grid modules to support layouts that are consistent and responsive across browser environments. The rest of the framework is written from scratch, giving you complete freedom to extend or remove style information, or simply write your styles on top of the existing framework.
 
-## Getting Up and Running
+### Getting Up and Running
 	
-#### Dependencies
+##### Dependencies
 
-	1. node (~0.10.31)
-	2. grunt-cli (~v0.1.13) [`npm install -g grunt-cli`]
-	3. bower (~1.3.12) [`npm install -g bower`]
+1. node (~0.10.31)
+2. grunt-cli (~v0.1.13) [`npm install -g grunt-cli`]
+3. bower (~1.3.12) [`npm install -g bower`]
 
-#### Installation
+##### Installation
 
-	1. Clone this repository:
-	```
-	git clone https://github.com/MichaelZalla/StartupSass.git && cd StartupSass
-	```
-	2. Install the submodule(s) for this repository:
-	```
-	git submodule init && git submodule update
-	```
-	3. Set your remote project repository as the new remote origin:
-	```
-	git remote set-url origin https://github.com/YOUR_USERNAME/YOUR_PROJECT.git
-	```
-	4. Install node dependencies for building with Grunt:
-	```
-	sudo npm install
-	```
-	5. Customize your `README`, `package.json`, and `bower.json` files (optional)
-	6. Fetch frontend dependencies and build to `dist` directory:
-	```
-	grunt build && grunt watch
-	```
-	7. Start a live-reload server and view the site in-browser:
-	```
-	// in a separate console session
-	barkeep -p 8000
-	```
+1. Clone this repository:
+```
+git clone https://github.com/MichaelZalla/StartupSass.git && cd StartupSass
+```
+2. Install the submodule(s) for this repository:
+```
+git submodule init && git submodule update
+```
+3. Set your remote project repository as the new remote origin:
+```
+git remote set-url origin https://github.com/YOUR_USERNAME/YOUR_PROJECT.git
+```
+4. Install node dependencies for building with Grunt:
+```
+sudo npm install
+```
+5. Customize your `README`, `package.json`, and `bower.json` files (optional)
+6. Fetch frontend dependencies and build to `dist` directory:
+```
+grunt build && grunt watch
+```
+7. Start a live-reload server and view the site in-browser:
+```
+// in a separate console session
+barkeep -p 8000
+```
 
-## Customizing Your Project
+### Customizing Your Project
 
 These first steps will help you become more familiar with your scaffold, while
 adding some originality to your new site:
 
-#### Update Site Metadata
+##### Update Site Metadata
 
 
-
-#### Update Site Favicon
-
+##### Update Site Favicon
 
 
-#### Adding Custom Stylesheets
+##### Add New Page Content
 
 
+##### Adding Custom Stylesheets
 
-#### Adding Custom Scripts
 
+##### Adding Custom Scripts
 
 
 <!---
