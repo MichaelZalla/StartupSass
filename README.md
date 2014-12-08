@@ -4,9 +4,12 @@ StartupSass is a small, responsive scaffolding designed to accelerate your web p
 
 StartupSass uses ZURB Foundation's Normalize and Grid modules to support layouts that are consistent and responsive across browser environments. The rest of the framework is written from scratch, giving you complete freedom to extend or remove style information, or simply write your styles on top of the existing framework.
 
-### @TODO
+##### TODOS
 
-- [ ] Write customization walkthroughs
+- [ ] Write project customization walkthroughs
+- [ ] Reconsider usefulness of `.view-content` page wrapper
+
+---
 
 ### Getting Up and Running
 	
@@ -64,6 +67,8 @@ StartupSass uses ZURB Foundation's Normalize and Grid modules to support layouts
 	barkeep -p 8000
 	```
 
+---
+
 ### Build System Tasks
 
 StartupSass comes with several pre-configured tasks that can be run from the command-line with Grunt. Tasks are defined within `Gruntfile.js` in your project's root directory. You may want to re-configure or remove certain tasks to fit the needs of your project (in addition to adding new tasks).
@@ -80,37 +85,169 @@ StartupSass comes with several pre-configured tasks that can be run from the com
 
 **Note**: The `grunt build` command will run the `bower:install`, `concat`, `copy`, and `sass` tasks, in that order.
 
-### Customizing Your Project
+<!---
 
-These first steps will help you become more familiar with your scaffold, while
-adding some originality to your new site:
+### Customizing A New Project
+
+Here are some easy first steps to add some originality to your new site, while helping your get more familiar with the scaffold.
+
+**Notice**: If you've cloned this repository with Git and are working on the `master` branch, be sure to consider setting a new remote origin for the repo. Otherwise, issuing a `git pull` may bring in changes from the StartupSass repository that could overwrite or break your local changes or additions.
 
 ##### Update Site Metadata
 
+StartupSass provides an `index.html` file at the base of the `src` folder. You can think of this as a test page which lets you explore a small amount of responsive functionality that's built into the scaffold. However, you may find it's easiest to use this HTML as a basis for a landing page.
+
+Let's update the metadata in the `head` of the HTML. Out of the box, it should look something like this:
+
+```html
+<title>Startup Sass</title>
+<meta name="description" content="Small, responsive scaffolding designed to accelerate your web project">
+<meta name="author" content="Michael Zalla (https://github.com/MichaelZalla)">
+```
+
+In your text editor, change the `title` tag's text value and the content values stored in the `description` and `author` metadata tags to match your project.
 
 ##### Update Site Favicon
 
+The site's favicon files are located alongside the `index.html` file in `src`.
+Changes to the favicon files may not be immediately reflected by your browser; you may need to append or change an arbitrary parameter (such as '?v=0.1') to the favicon URLs to trigger a re-cache in the browser.
 
 ##### Add New Page Content
 
-
 ##### Adding Custom Stylesheets
-
 
 ##### Adding Custom Scripts
 
+-->
+
+---
+
+### Sass Framework Reference
+
+##### Configuration
+
+The `config` module defines a number of global Sass variables for controlling some basic attributes of your page, including the maximum width of your content on large screens, and the base typographic point sizes for large and small screens.
+
+The module is located at `src/scss/modules/_config.scss`. You can extend this module with your own project-specific variables.
+
+##### Fonts
+
+Default font definitions are written inside of the `fonts` module. Writing definitions is simplified with the `fontface` Sass 
+mixin:
+
+```Sass
+@mixin fontface($family, $source,
+				$weight: $font-weight-regular,
+				$style: normal)
+```
+
+This mixin module also defines some global `font-weight` variables that can be used in font definitions and typographic styles:
+
+```
+$font-weight-regular: 	400 !default;
+$font-weight-bold: 		700 !default;
+// etc...
+```
+
+This module is located at `src/scss/partials/global/_fonts.scss`. You can extend this module with your own @font-face definitions for custom fonts used in your project.
+
+**Note**: All font files stored in `src/fonts` will be automatically copied (overwritten) to `dist/fonts` whenever Grunt is used to run the `copy` task.
+
+##### Colors
+
+The `colors` module defines RGB-formatted color values for use across your Sass modules, including values for the default appearance of type and anchors (links) on your page. When adding a project-specific color palette, you may want to prefix your own color variables with a project namespace:
+
+```Sass
+$mySite-color-1:rgb(127,127,127);
+$mySite-color-2:rgb(255,255,255);
+```
+
+This module is located at `src/scss/modules/_colors.scss`.
+
+**Note**: The pre-defined color variables are used by Sass modules that come bundled with StartupSass. Removing these variable definitions will cause the Sass compiler to throw an `Undefined variable` error. Renaming one of these variables requires that you replace each reference to the color inside of all modules with a valid variable reference.
+
+##### Mixins
+
+StartupSass also provides a number of useful global mixins for common styling tasks. Many of these mixins come from the (`SassMixins`)[https://github.com/MichaelZalla/SassMixins] submodule, which is a separately hosted repository.
+
+For information about these mixins (with examples), see: https://github.com/MichaelZalla/SassMixins/blob/master/_bundle.scss
+
+##### Typography
+
+The `typography` module sets up a number of basic styles, classes, and @extend directives for controlling the appearance of type. 
+
+The `$ss-type-default-font-family` variable defined in this module can be used to specify your document's default (or root) font. This variable's value must correspond to a font which you have defined, or a system font.
+
+This module is also responsible for setting base typographic point sizes for large and small screens. All typographic elements nested beneath the `html` tag may have their point sizes specified relative to this root value, resulting in a more flexible, relative hierarchy.
+
+Built-in typographic decorator classes include:
+
+	- '.heading'
+	- '.subheading'
+	- '.label'
+	- '.callout'
+	- '.quotes'
+	- '.light'
 
 <!---
-helps your development efforts kick off on the right foo
-
-starts your website off on the right foot 
-
-StartupSass is a small, responsive website scaffolding designed to jump-start
-front-end development. StartupSass gets your project 
-
-allowing you to spend less time configuring a build system
-or
+The `.center` class and `%center` @extend directive can be used to make typographic elements serve as centered content containers.
 -->
+
+The module is located at `src/scss/particles/global/_typography.scss`.
+
+##### Layout
+
+The `layout` module is used in conjunction with Foundation's Grid module to set up a basic responsive structure for your web content. It relies on variables defined in the `config` module to determine things like size and padding.
+
+To deliver the best experience across devices, it is suggested that you structure your page's content (including headers and footers) into discrete sections, wrapped by a `.view-content` element, like so:
+
+	```html
+	<body>
+		<div class="view-content">
+			<!-- Content sections go here! -->
+		</div>
+		<!-- Page scripts -->
+		<script src="/to/my/script.js"></script>
+	</body>
+	```
+
+Conventionally, content sections use wrapper elements to achieve horizontal and vertical centering of content:
+
+	```html
+	<body>
+		<div class="view-content">
+			<section>
+				<div class="content">
+					<div class="container">
+						<!-- Section content -->
+					</div>
+				</div>
+			</section>
+		</div>
+	</body>
+	```
+
+The framework's built-in header and footer implementations also follow this convention:
+
+	```html
+	<body>
+		<div class="view-content">
+			<footer>
+				<div class="content">
+					<div class="container">
+						<!-- Footer content -->
+					</div>
+				</div>
+			</footer>
+		</div>
+	</body>
+	```
+
+`section`s will, by default, stretch to be the full width of the display, even if their content is constrained. This means that background images applied to `section` elements will still bleed to the edges of the screen. You can also use the `.fullscreen` class on a `section` to stretch it to be the full height of the screen as well (this is especially useful for mobile page layouts).
+
+This module is located at `src/scss/partials/global/_layout.scss`.
+
+---
 
 ### License
 

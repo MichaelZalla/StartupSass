@@ -168,10 +168,3 @@ h6, h6:before, h6:after {
 
 .quotes:before { margin-right: 2px; content: "\201C"; }
 .quotes:after  {  margin-left: 2px; content: "\201C"; }
-
-/* Section typography */
-
-.dark {
-	@extend %light;
-	p, span, a, .copy { color: white !important; }
-}

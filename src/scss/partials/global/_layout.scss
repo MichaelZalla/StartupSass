@@ -84,6 +84,13 @@ button {
 
 	}
 
+	/* Section typography */
+
+	& > section.dark {
+		@extend %light;
+		p, span, a, .copy { color: white !important; }
+	}
+
 }
 
 /* Foundation overrides  */
