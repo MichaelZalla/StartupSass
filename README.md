@@ -1,6 +1,6 @@
 # StartupSass
 
-StartupSass is a small, responsive scaffolding designed to accelerate your web project. StartupSass offers a Sass framework that scales easily with your site. in addition to a basic build system for common development tasks. StartupSass helps to minimize the time it takes to get your project off the ground, allowing you to focus on what makes your project *special*.
+StartupSass is a small, responsive scaffolding designed to accelerate your web project. StartupSass offers a Sass framework that scales easily with your site, in addition to a basic build system for common development tasks. StartupSass helps to minimize the time it takes to get your project off the ground, allowing you to focus on what makes your project *special*.
 
 StartupSass uses ZURB Foundation's Normalize and Grid modules to support layouts that are consistent and responsive across browser environments. The rest of the framework is written from scratch, giving you complete freedom to extend or remove style information, or simply write your styles on top of the existing framework.
 
@@ -58,6 +58,22 @@ StartupSass uses ZURB Foundation's Normalize and Grid modules to support layouts
 	barkeep -p 8000
 	```
 
+### Build System Tasks
+
+StartupSass comes with several pre-configured tasks that can be run from the command-line with Grunt. Tasks are defined within `Gruntfile.js` in your project's root directory. You may want to re-configure or remove certain tasks to fit the needs of your project, in addition to adding new tasks.
+
+- **bower:install**: Fetch Bower dependencies and save them locally inside the `bower_components` directory.
+
+- **copy**: Copies HTML files, favicon files, images, fonts, and custom scripts from `src` to `dist`.
+
+- **concat**: Copies front-end JavaScript dependencies from `bower_components` into your project's scripts directory.
+
+- **sass**: Compiles Sass into a minified `startup-sass.min.css` file that is placed in your project's styles directory.
+
+- **watch**: Auto-compiles Sass and auto-copies images and other assets from `src` when changes occur. (**blocking**)
+
+The `grunt build` command will run the `bower:install`, `concat`, `copy`, and `sass` tasks in order.
+
 ### Customizing Your Project
 
 These first steps will help you become more familiar with your scaffold, while
@@ -89,3 +105,9 @@ front-end development. StartupSass gets your project
 allowing you to spend less time configuring a build system
 or
 -->
+
+### License
+
+Copyright (c) 2014 Michael Zalla
+
+Licensed under the [MIT License](http://opensource.org/licenses/MIT).

@@ -1,7 +1,7 @@
 {
   "name": "StartupSass",
   "version": "0.0.1",
-  "description": "Small responsive site scaffolding built on Foundation Sass",
+  "description": "Small, responsive scaffolding designed to accelerate your web project.",
   "keywords": [
     "sass",
     "framework",
