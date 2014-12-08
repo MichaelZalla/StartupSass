@@ -16,61 +16,63 @@ StartupSass uses ZURB Foundation's Normalize and Grid modules to support layouts
 
 1. Clone this repository:
 	
-	```
+	```bash
 	git clone https://github.com/MichaelZalla/StartupSass.git && cd StartupSass
 	```
 
 2. Install the submodule(s) for this repository:
 	
-	```
+	```bash
 	git submodule init && git submodule update
 	```
 
 3. Set your remote project repository as the new remote origin:
 	
-	```
+	```bash
 	git remote set-url origin https://github.com/YOUR_USERNAME/YOUR_PROJECT.git
 	```
 
 4. Install node dependencies for building with Grunt:
 	
-	```
+	```bash
 	sudo npm install
 	```
 
 5. Customize your `README.md`, `package.json`, and `bower.json` files (optional)
 	
-	```
+	```bash
 	vi README.md
+	...
+	vi package.json
 	...
 	```
 
 6. Fetch frontend dependencies and build to `dist` directory:
 	
-	```
+	```bash
 	grunt build && grunt watch
 	```
 
 7. Start a live-reload server and view the site in-browser:
 	
-	```
+	```bash
 	// in a separate console session
 	barkeep -p 8000
 	```
 
 ### Build System Tasks
 
-StartupSass comes with several pre-configured tasks that can be run from the command-line with Grunt. Tasks are defined within `Gruntfile.js` in your project's root directory. You may want to re-configure or remove certain tasks to fit the needs of your project, in addition to adding new tasks.
+StartupSass comes with several pre-configured tasks that can be run from the command-line with Grunt. Tasks are defined within `Gruntfile.js` in your project's root directory. You may want to re-configure or remove certain tasks to fit the needs of your project (in addition to adding new tasks).
 
-- **bower:install**: Fetch Bower dependencies and save them locally inside the `bower_components` directory.
+- **`bower:install`**: Fetch Bower dependencies and save them locally inside the `bower_components` directory.
 
-- **copy**: Copies HTML files, favicon files, images, fonts, and custom scripts from `src` to `dist`.
+- **`copy`**: Copies HTML files, favicon files, images, fonts, and custom scripts from `src` to `dist`.
 
-- **concat**: Copies front-end JavaScript dependencies from `bower_components` into your project's scripts directory.
+- **`concat`**: Copies front-end JavaScript dependencies from `bower_components` into your project's scripts directory.
 
-- **sass**: Compiles Sass into a minified `startup-sass.min.css` file that is placed in your project's styles directory.
+- **`sass`**: Compiles Sass into a minified `startup-sass.min.css` file that is placed in your project's styles directory.
 
-- **watch**: Auto-compiles Sass and auto-copies images and other assets from `src` when changes occur. (**blocking**)
+- **`watch`**: Auto-compiles Sass and auto-copies images and other assets from `src` when changes occur. (**blocking**)
 
 The `grunt build` command will run the `bower:install`, `concat`, `copy`, and `sass` tasks in order.
 
