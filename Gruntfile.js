@@ -2,14 +2,25 @@ module.exports = function(grunt) {
 
 	grunt.initConfig({
 
-		// Allows us to reference package property values
+		// Allows for referencing of package property values
 		pkg: grunt.file.readJSON('package.json'),
+
+		bower: {
+			install: {
+				options: {
+					cleanBowerDir: false,
+					copy: false,
+					install: true,
+					verbose: true
+				}
+			}
+		},
 
 		copy: {
 			dist: {
 				files: [
-					// Make all targets in 'src' directory copy to
-					// a location in 'dist' relative to own directory
+					// Make all targets in 'src' directory copy to a location
+					// in 'dist' relative to own directory
 					{ expand:true, cwd:'src/', src:['*.html','*.png','*.ico'], dest:'dist' },
 					{ expand:true, cwd:'src/js/', src:['**'], dest:'dist/js' },
 					{ expand:true, cwd:'src/img/', src:['*.svg','*.png','*.jpg','*.jpeg'], dest:'dist/img' },
@@ -19,14 +30,6 @@ module.exports = function(grunt) {
 		},
 
 		concat: {
-			/*
-			foundation: { files: {
-				// foundation.min.js
-				'dist/js/vendor/foundation/foundation.min.js':
-					//@TODO Replace with module-specific concat for smaller size
-					['bower_components/foundation/js/foundation.min.js']
-			}},
-			*/
 			jquery: { files: {
 				// jquery.min.js
 				'dist/js/vendor/jquery/jquery.min.js':
@@ -50,10 +53,7 @@ module.exports = function(grunt) {
 		sass: {
 			options: {
 				// Helps Sass task resolve Foundation dependencies
-				loadPath: [
-					'bower_components/foundation/scss',
-					'bower_components/sass-burger'
-				],
+				loadPath: 'bower_components/foundation/scss',
 				style: 'compressed',
 				quiet: true
 			},
@@ -71,18 +71,21 @@ module.exports = function(grunt) {
 			},
 			sass: {
 				files: 'src/scss/**/*.scss',
-				tasks: ['sass']
-			}
+				tasks: ['sass'],
+				livereload: true
+			},
+
 		}
 
 	});
 
+	grunt.loadNpmTasks('grunt-bower-task');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
-
-	grunt.registerTask('compile', ['sass']);
+	
+	grunt.registerTask('build', ['bower:install', 'concat', 'copy', 'sass']);
 	grunt.registerTask('default', ['watch']);
 
 }

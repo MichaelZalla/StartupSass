@@ -23,7 +23,9 @@
   "main": "src/scss/main.scss",
   "scripts": {},
   "devDependencies": {
+    "barkeep": "^0.3.0",
     "grunt": "^0.4.5",
+    "grunt-bower-task": "^0.4.0",
     "grunt-contrib-concat": "^0.5.0",
     "grunt-contrib-copy": "^0.7.0",
     "grunt-contrib-sass": "^0.8.1",
