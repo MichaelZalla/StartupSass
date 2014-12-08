@@ -24,10 +24,10 @@ StartupSass uses ZURB Foundation's Normalize and Grid modules to support layouts
 1. Clone this repository:
 	
 	```bash
-	git clone https://github.com/MichaelZalla/StartupSass.git && cd StartupSass
+	git clone https://github.com/MichaelZalla/StartupSass.git && mv StartupSass YOUR_PROJECT && cd YOUR_PROJECT
 	```
 
-2. Install the submodule(s) for this repository:
+2. Install the submodule(s) that StartupSass depends on:
 	
 	```bash
 	git submodule init && git submodule update
@@ -49,12 +49,12 @@ StartupSass uses ZURB Foundation's Normalize and Grid modules to support layouts
 	
 	```bash
 	vi README.md
-	# ...
+	# Update fields ...
 	vi package.json
-	# ...
+	# Update fields ...
 	```
 
-6. Fetch frontend dependencies and build to `dist` directory:
+6. Fetch front-end dependencies and build to `dist` directory:
 	
 	```bash
 	grunt build && grunt watch
@@ -63,7 +63,7 @@ StartupSass uses ZURB Foundation's Normalize and Grid modules to support layouts
 7. Start a live-reload server and view the site in-browser:
 	
 	```bash
-	# in a separate console session
+	# In a separate console session ...
 	barkeep -p 8000
 	```
 
@@ -73,17 +73,17 @@ StartupSass uses ZURB Foundation's Normalize and Grid modules to support layouts
 
 StartupSass comes with several pre-configured tasks that can be run from the command-line with Grunt. Tasks are defined within `Gruntfile.js` in your project's root directory. You may want to re-configure or remove certain tasks to fit the needs of your project (in addition to adding new tasks).
 
-- **`bower:install`**: Fetch Bower dependencies and save them locally inside the `bower_components` directory.
+- **`bower:install`**: Fetch Bower dependencies and save them locally.
 
-- **`copy`**: Copies HTML files, favicon files, images, fonts, and custom scripts from `src` to `dist`.
+- **`copy`**: Copies HTML, favicons, images, fonts, and custom scripts from `src` to `dist`.
 
-- **`concat`**: Copies front-end JavaScript dependencies from `bower_components` into your project's scripts directory.
+- **`concat`**: Copies front-end JavaScript dependencies into your project's scripts directory.
 
-- **`sass`**: Compiles Sass into a minified `startup-sass.min.css` file that is placed in your project's styles directory.
+- **`sass`**: Compiles Sass into a minified stylesheet that is placed in your project's styles directory.
 
-- **`watch`**: Auto-compiles Sass and auto-copies images and other assets from `src` when changes occur. (**blocking**)
+- **`watch`**: Watch for changes to files for auto-compilation and auto-copying (**Blocking**).
 
-**Note**: The `grunt build` command will run the `bower:install`, `concat`, `copy`, and `sass` tasks, in that order.
+**\*Note**: The `grunt build` command will run the `bower:install`, `concat`, `copy`, and `sass` tasks, in that order.
 
 <!---
 
@@ -124,16 +124,16 @@ Changes to the favicon files may not be immediately reflected by your browser; y
 
 ### Sass Framework Reference
 
-##### Configuration
+#### Configuration
 
-The `config` module defines a number of global Sass variables for controlling some basic attributes of your page, including the maximum width of your content on large screens, and the base typographic point sizes for large and small screens.
+The `config` module defines a number of global Sass variables for controlling some basic attributes of your page, including the maximum width of your content (for large screens), and the base typographic point sizes for large and small screens.
 
 The module is located at `src/scss/modules/_config.scss`. You can extend this module with your own project-specific variables.
 
-##### Fonts
+#### Fonts
 
 Default font definitions are written inside of the `fonts` module. Writing definitions is simplified with the `fontface` Sass 
-mixin:
+mixin (included):
 
 ```Sass
 @mixin fontface($family, $source,
@@ -141,7 +141,7 @@ mixin:
 				$style: normal)
 ```
 
-This mixin module also defines some global `font-weight` variables that can be used in font definitions and typographic styles:
+This mixin module also defines some global `font-weight` variables that provide better symantics to your font definitions and typographic style rules:
 
 ```
 $font-weight-regular: 	400 !default;
@@ -149,45 +149,45 @@ $font-weight-bold: 		700 !default;
 // etc...
 ```
 
-This module is located at `src/scss/partials/global/_fonts.scss`. You can extend this module with your own @font-face definitions for custom fonts used in your project.
+This module is located at `src/scss/partials/global/_fonts.scss`. You can extend this module with your own @font-face definitions for custom fonts used by your project.
 
-**Note**: All font files stored in `src/fonts` will be automatically copied (overwritten) to `dist/fonts` whenever Grunt is used to run the `copy` task.
+**\*Note**: All font files stored in `src/fonts` will be automatically copied (overwritten) to `dist/fonts` whenever Grunt is used to run the `copy` task.
 
-##### Colors
+#### Colors
 
-The `colors` module defines RGB-formatted color values for use across your Sass modules, including values for the default appearance of type and anchors (links) on your page. When adding a project-specific color palette, you may want to prefix your own color variables with a project namespace:
+The `colors` module defines RGB-formatted color values for use across your Sass modules, including values for defining the default appearance of type and link elements on your page. When adding a project-specific color palette, you may wish to prefix your own color variables with a project namespace:
 
-```Sass
+```
 $mySite-color-1:rgb(127,127,127);
 $mySite-color-2:rgb(255,255,255);
 ```
 
 This module is located at `src/scss/modules/_colors.scss`.
 
-**Note**: The pre-defined color variables are used by Sass modules that come bundled with StartupSass. Removing these variable definitions will cause the Sass compiler to throw an `Undefined variable` error. Renaming one of these variables requires that you replace each reference to the color inside of all modules with a valid variable reference.
+**\*Note**: The pre-defined color variables are used by Sass modules that come bundled with StartupSass. Removing these variable definitions will cause the Sass compiler to throw an *`Undefined variable`* error. Renaming one of these variables requires that you replace each reference to the color inside of all modules with a valid variable reference.
 
-##### Mixins
+#### Mixins
 
-StartupSass also provides a number of useful global mixins for common styling tasks. Many of these mixins come from the (`SassMixins`)[https://github.com/MichaelZalla/SassMixins] submodule, which is a separately hosted repository.
+StartupSass also provides a number of useful global mixins for common styling tasks. Many of these mixins come from the (SassMixins)[https://github.com/MichaelZalla/SassMixins] submodule, which is a separately hosted repository.
 
 For information about these mixins (with examples), see: https://github.com/MichaelZalla/SassMixins/blob/master/_bundle.scss
 
-##### Typography
+#### Typography
 
-The `typography` module sets up a number of basic styles, classes, and @extend directives for controlling the appearance of type. 
+The `typography` module sets up a number of basic styles, classes, and `@extend` directives for controlling the appearance of type on your page. 
 
-The `$ss-type-default-font-family` variable defined in this module can be used to specify your document's default (or root) font. This variable's value must correspond to a font which you have defined, or a system font.
+The `$ss-type-default-font-family` variable defined in this module can be used to specify your document's default (or root) typeface. This value must correspond to a font which you have defined in the `fonts` module, or defined elsewhere, or it must be a [default system font](http://www.cssfontstack.com/).
 
 This module is also responsible for setting base typographic point sizes for large and small screens. All typographic elements nested beneath the `html` tag may have their point sizes specified relative to this root value, resulting in a more flexible, relative hierarchy.
 
 Built-in typographic decorator classes include:
 
-	- '.heading'
-	- '.subheading'
-	- '.label'
-	- '.callout'
-	- '.quotes'
-	- '.light'
+- `.heading`
+- `.subheading`
+- `.label`
+- `.callout`
+- `.quotes`
+- `.light`
 
 <!---
 The `.center` class and `%center` @extend directive can be used to make typographic elements serve as centered content containers.
@@ -195,55 +195,55 @@ The `.center` class and `%center` @extend directive can be used to make typograp
 
 The module is located at `src/scss/particles/global/_typography.scss`.
 
-##### Layout
+#### Layout
 
 The `layout` module is used in conjunction with Foundation's Grid module to set up a basic responsive structure for your web content. It relies on variables defined in the `config` module to determine things like size and padding.
 
 To deliver the best experience across devices, it is suggested that you structure your page's content (including headers and footers) into discrete sections, wrapped by a `.view-content` element, like so:
 
-	```html
-	<body>
-		<div class="view-content">
-			<!-- Content sections go here! -->
-		</div>
-		<!-- Page scripts -->
-		<script src="/to/my/script.js"></script>
-	</body>
-	```
+```html
+<body>
+	<div class="view-content">
+		<!-- Content sections go in here! -->
+	</div>
+	<!-- Page scripts -->
+	<script src="/to/my/script.js"></script>
+</body>
+```
 
-Conventionally, content sections use wrapper elements to achieve horizontal and vertical centering of content:
+Conventionally, content sections use wrapper elements to achieve horizontal and vertical centering:
 
-	```html
-	<body>
-		<div class="view-content">
-			<section>
-				<div class="content">
-					<div class="container">
-						<!-- Section content -->
-					</div>
+```html
+<body>
+	<div class="view-content">
+		<section>
+			<div class="content">
+				<div class="container">
+					<!-- Section content -->
 				</div>
-			</section>
-		</div>
-	</body>
-	```
+			</div>
+		</section>
+	</div>
+</body>
+```
 
 The framework's built-in header and footer implementations also follow this convention:
 
-	```html
-	<body>
-		<div class="view-content">
-			<footer>
-				<div class="content">
-					<div class="container">
-						<!-- Footer content -->
-					</div>
+```html
+<body>
+	<div class="view-content">
+		<footer>
+			<div class="content">
+				<div class="container">
+					<!-- Footer content -->
 				</div>
-			</footer>
-		</div>
-	</body>
-	```
+			</div>
+		</footer>
+	</div>
+</body>
+```
 
-`section`s will, by default, stretch to be the full width of the display, even if their content is constrained. This means that background images applied to `section` elements will still bleed to the edges of the screen. You can also use the `.fullscreen` class on a `section` to stretch it to be the full height of the screen as well (this is especially useful for mobile page layouts).
+A `section` will, by default, stretch to be the full width of the display, even if its content is constrained to be smaller. This means that background images applied to sections will still extend to the edges of the screen. You can use the `.fullscreen` class on a section to stretch it to be the full height of the screen as well (this is especially useful for mobile-first layouts).
 
 This module is located at `src/scss/partials/global/_layout.scss`.
 
