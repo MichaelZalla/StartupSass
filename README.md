@@ -8,38 +8,51 @@ StartupSass uses ZURB Foundation's Normalize and Grid modules to support layouts
 	
 ##### Dependencies
 
-1. node (~0.10.31)
-2. grunt-cli (~v0.1.13) [`npm install -g grunt-cli`]
-3. bower (~1.3.12) [`npm install -g bower`]
+1. [node](http://nodejs.org/) (~0.10.31)
+2. [grunt-cli](http://gruntjs.com/getting-started#installing-the-cli) (~v0.1.13) — `npm install -g grunt-cli`
+3. [bower](http://bower.io/#install-bower) (~1.3.12) — `npm install -g bower`
 
 ##### Installation
 
 1. Clone this repository:
+	
 	```
 	git clone https://github.com/MichaelZalla/StartupSass.git && cd StartupSass
 	```
+
 2. Install the submodule(s) for this repository:
+	
 	```
 	git submodule init && git submodule update
 	```
+
 3. Set your remote project repository as the new remote origin:
+	
 	```
 	git remote set-url origin https://github.com/YOUR_USERNAME/YOUR_PROJECT.git
 	```
+
 4. Install node dependencies for building with Grunt:
+	
 	```
 	sudo npm install
 	```
+
 5. Customize your `README.md`, `package.json`, and `bower.json` files (optional)
+	
 	```
 	vi README.md
 	...
 	```
+
 6. Fetch frontend dependencies and build to `dist` directory:
+	
 	```
 	grunt build && grunt watch
 	```
+
 7. Start a live-reload server and view the site in-browser:
+	
 	```
 	// in a separate console session
 	barkeep -p 8000
