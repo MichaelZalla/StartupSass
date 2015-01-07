@@ -8,7 +8,7 @@
 
 /* Footer styles */
 
-.view-content footer {
+footer {
 
 	.content { padding: 32px 0px; }
 
@@ -20,7 +20,7 @@
 		border: 2px solid rgba(black, $brandmark-opacity);
 		opacity: $brandmark-opacity;
 		@include same(width, height, 48px);
-		@include background("../img/icon-black-flattened.svg", 62%);
+		@include background("/images/logo-black.svg", 62%);
 		@extend %grayscale;
 	}
 
@@ -57,9 +57,9 @@
 
 		a p { @extend %hide-text; }
 
-		a.facebook 	{ @include background("../img/social-icon-128x128-facebook.png"); }
-		a.twitter 	{ @include background("../img/social-icon-128x128-twitter.png"); }
-		a.instagram { @include background("../img/social-icon-128x128-instagram.png"); }
+		a.facebook 	{ @include background("../images/social-logo-128x128-facebook.png"); }
+		a.twitter 	{ @include background("../images/social-logo-128x128-twitter.png"); }
+		a.instagram { @include background("../images/social-logo-128x128-instagram.png"); }
 
 		li:not(:first-child) { margin-left: 14px; }
 
@@ -67,13 +67,13 @@
 
 }
 
-.view-content footer:not(.dark) .content { border-top: 1px solid $color-gray-4; }
+footer:not(.dark) .content { border-top: 1px solid $color-gray-4; }
 
 /* Mobile styles */
 
 @media #{ $small-only } {
 
-.view-content footer {
+footer {
 
 	.ss-footer-branding,
 	.ss-footer-navigation,
@@ -93,7 +93,7 @@
 
 @media #{ $medium-up } {
 
-.view-content footer {
+footer {
 
 	.content { padding-bottom: 45px; }
 	

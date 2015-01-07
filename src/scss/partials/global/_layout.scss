@@ -7,95 +7,38 @@
  * Some style rules are dependent on variables defined in the 'config' module.
  */
 
+/* Foundation overrides */
+
+.row,
+.column { overflow: visible; }
+.row { max-width: 100% !important; }
+
+/* Layout placeholder selectors */
+
+%center {
+	display: block;
+	@include same(margin-left, margin-right, auto);
+	text-align: center;
+}
+
+.center { @extend %center; }
+
+%placeholder { 
+	overflow: hidden;
+	text-align: center;
+	border: 1px solid white;
+	@include background("/images/placeholder-white.svg", cover);
+}
+
+.placeholder { @extend %placeholder; }
+
 /* Root elements */
 
-html, body { height: 100%; }
-
-/* List elements */
-
-ul, ol {
-	
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
-		
-	@include vendorize(margin-start, 	0em);
-	@include vendorize(margin-end, 		0em);
-	@include vendorize(margin-before, 	0em);
-	@include vendorize(margin-after, 	0em);
-
-	@include vendorize(padding-start, 	0em);
-	@include vendorize(padding-end, 	0em);
-	@include vendorize(padding-before, 	0em);
-	@include vendorize(padding-after, 	0em);
-
-}
+html, body { }
 
 /* Container elements */
 
-div, section, header, footer, nav { overflow: auto; }
-
-/* Form input elements */
-
-input, textarea, select, button {
-	display: block;
-	margin-top: 12px;
-}
-
-input[type="text"],
-input[type="password"] {
-	min-width: 220px;
-	height: 38px;
-	border: 1px solid darken($color-gray-1, 14%);
-	border-radius: 8px;	
-	background-color: white;
-	@include same(padding-left, padding-right, 10px);
-	@include vendorize(outline, none);
-}
-
-button {
-	min-width: 220px;
-	height: 38px;
-	border: none;
-	@extend %light;
-	//@TODO Add default background colors for button states
-	@include mouseover(background-color, $color-gray-3);
-	@include mouseout(background-color, $color-gray-4);
-}
-
-/* Section layouts */
-
-.view-content {
-
-	height: 100%;
-
-	& > header .content,
-	& > section .content,
-	& > footer .content { margin: 0px auto; }
-
-	& > section.fullscreen {
-
-		display: table;
-		width: 100%;
-		height: 100%;
-
-		.container { display: table-cell; vertical-align: middle; }
-		.content { display: table; }
-
-	}
-
-	/* Section typography */
-
-	& > section.dark {
-		@extend %light;
-		p, span, a, .copy { color: white !important; }
-	}
-
-}
-
-/* Foundation overrides  */
-
-.row { max-width: 100% !important; }
+div, section, header, nav, footer { overflow: auto; }
 
 /* Clearfix */
 
@@ -111,14 +54,143 @@ button {
 .clear.divider:after {
 	visibility: visible;
 	height: 4px;
-	@include background("../img/divider.png", 66.66% 100%)
+	@include background("/images/divider.png", 66.66% 100%)
+}
+
+/* Section layouts */
+
+body {
+
+	overflow-x: hidden;
+
+	// Hide vertical scrollbars when possible
+	&::-webkit-scrollbar { width: 0 !important; }
+	-ms-overflow-style: none;
+
+	& > header .content,
+	& > section .content,
+	& > footer .content { margin: 0px auto; }
+
+	& > section.fullscreen {
+
+		display: table;
+
+		width: 100%;
+		height: 100vh;
+
+		.container { display: table-cell; vertical-align: middle; }
+		.content { display: table; }
+
+	}
+
+	& > .dark .content {
+		&, a { @extend %light; }
+	}
+
+}
+
+/* Typographic elements */
+
+p, span, a, .copy {
+	&, &:before, &:after {
+		display: inline-block;
+	}
+}
+
+/* List elements */
+
+ul, ol {
+	
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+		
+	// @TODO Which of these are really necessary to set?
+
+	@include vendorize(margin-start, 	0em);
+	@include vendorize(margin-end, 		0em);
+	@include vendorize(margin-before, 	0em);
+	@include vendorize(margin-after, 	0em);
+
+	@include vendorize(padding-start, 	0em);
+	@include vendorize(padding-end, 	0em);
+	@include vendorize(padding-before, 	0em);
+	@include vendorize(padding-after, 	0em);
+
+}
+
+/* Button Elements */
+
+%button {
+	
+	display: block;
+	margin-top: $ss-type-copy-point-size * 0.5;
+	padding: 14px 22px;
+	min-width: 220px;
+	border-radius: 14px;
+	border: none;
+
+	@include mouseout(background-color, $color-spot-1);
+	@include mouseover(background-color, $color-spot-2);
+
+	@include vendorize(transition, (
+		color 0.24s ease-in-out,
+		background-color 0.24s ease-in-out,
+		border-color 0.24s ease-in-out
+	));
+
+}
+
+button,.button { @extend %button; }
+button { height: 38px; }
+.button { @extend %center; } // width: 100%; text-align: center;
+
+/* Form input elements */
+
+input, textarea, select {
+	display: block;
+	margin-top: 12px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+	
+	padding: 7px 10px 5px 18px;
+	width: 100%;
+	border-radius: 0;
+	border: none;
+	background-color: white;
+
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+	
+	height: 53px;
+
+// 	min-width: 220px;
+// 	height: 38px;
+// 	border: 1px solid darken($color-gray-1, 14%);
+// 	border-radius: 8px;	
+// 	background-color: white;
+// 	@include same(padding-left, padding-right, 10px);
+// 	@include vendorize(outline, none);
+	
+}
+
+textarea {
+	padding-top: 12px;
+	min-height: 140px;
 }
 
 /* Mobile styles */
 
 @media #{ $small-only } {
 
-.view-content {
+body {
 
 	& > header  .content,
 	& > section .content,
@@ -141,7 +213,7 @@ button {
 	}
 
 	// Account for fixed page header
-	header.fixed ~ section .content {
+	header.fixed + section .content {
 		margin-top: $ss-mobile-section-top-margin + $ss-mobile-header-height;
 	}
 
@@ -153,7 +225,7 @@ button {
 
 @media #{ $medium-up } {
 
-.view-content {
+body {
 
 	& > header  .content,
 	& > section .content,
@@ -172,8 +244,26 @@ button {
 	}
 
 	// Account for fixed page header
-	header.fixed ~ section .content {
+	header.fixed + section .content {
 		margin-top: $ss-desktop-section-top-margin + $ss-desktop-header-height;
+	}
+
+	// Allow adjacent columns to be vertically bottom-aligned
+	.row.align-bottom { display: table; padding-bottom: 1px; }
+	.row.align-bottom > .column { display: table-cell; vertical-align: bottom; }
+	.row.align-bottom > .column,
+	.row.align-bottom > .column + .column:last-child { float: none !important; }
+
+	input[type="text"],
+	input[type="email"],
+	input[type="password"] { min-width: 220px; }
+	
+	button,
+	.button {
+		display: inline-block;
+		width: auto;
+		min-width: 220px;
+		@include same(padding-left, padding-right, 32px);
 	}
 
 }
