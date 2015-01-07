@@ -4,11 +4,6 @@ StartupSass is a small, responsive scaffolding designed to accelerate your web p
 
 StartupSass uses ZURB Foundation's Normalize and Grid modules to support layouts that are consistent and responsive across browser environments. The rest of the framework is written from scratch, giving you complete freedom to extend or remove style information, or simply write your styles on top of the existing framework.
 
-##### TODOS
-
-- [ ] Write project customization walkthroughs
-- [ ] Reconsider usefulness of `.view-content` page wrapper
-
 ---
 
 ### Getting Up and Running
@@ -24,7 +19,7 @@ StartupSass uses ZURB Foundation's Normalize and Grid modules to support layouts
 1. Clone this repository:
 	
 	```bash
-	git clone https://github.com/MichaelZalla/StartupSass.git && mv StartupSass YOUR_PROJECT && cd YOUR_PROJECT
+	git clone https://github.com/MichaelZalla/StartupSass.git && mvdir StartupSass YOUR_PROJECT && cd YOUR_PROJECT
 	```
 
 2. Install the submodule(s) that StartupSass depends on:
@@ -37,6 +32,8 @@ StartupSass uses ZURB Foundation's Normalize and Grid modules to support layouts
 	
 	```bash
 	git remote set-url origin https://github.com/YOUR_USERNAME/YOUR_PROJECT.git
+	# or leave your repo stranded
+	# git remote set-url origin http://0
 	```
 
 4. Install node dependencies for building with Grunt:
@@ -64,7 +61,8 @@ StartupSass uses ZURB Foundation's Normalize and Grid modules to support layouts
 	
 	```bash
 	# In a separate console session ...
-	barkeep -p 8000
+	sudo npm install -g barkeep
+	cd dist && barkeep -p 8000
 	```
 
 ---
@@ -126,7 +124,7 @@ Changes to the favicon files may not be immediately reflected by your browser; y
 
 #### Configuration
 
-The `config` module defines a number of global Sass variables for controlling some basic attributes of your page, including the maximum width of your content (for large screens), and the base typographic point sizes for large and small screens.
+The `config` module defines a number of global Sass variables for controlling some basic attributes of your page, including the maximum width of your content (for large screens), as well as margins and padding for top-level content sections.
 
 The module is located at `src/scss/modules/_config.scss`. You can extend this module with your own project-specific variables.
 
@@ -140,6 +138,8 @@ mixin (included):
 				$weight: $font-weight-regular,
 				$style: normal)
 ```
+
+With the resulting CSS rules, the browser will attempt to locate your font files through a number of extensions, in the following order: '.eot' (Embedded OpenType), '.ttf' (TrueType), '.otf' (OpenType), and '.woff' (Web Open Font).
 
 This mixin module also defines some global `font-weight` variables that provide better symantics to your font definitions and typographic style rules:
 
@@ -158,8 +158,8 @@ This module is located at `src/scss/partials/global/_fonts.scss`. You can extend
 The `colors` module defines RGB-formatted color values for use across your Sass modules, including values for defining the default appearance of type and link elements on your page. When adding a project-specific color palette, you may wish to prefix your own color variables with a project namespace:
 
 ```
-$mySite-color-1:rgb(127,127,127);
-$mySite-color-2:rgb(255,255,255);
+$my-project-color-1: rgb(127,127,127);
+$my-project-color-2: rgb(255,255,255);
 ```
 
 This module is located at `src/scss/modules/_colors.scss`.
@@ -174,7 +174,7 @@ For information about these mixins (with examples), see: https://github.com/Mich
 
 #### Typography
 
-The `typography` module sets up a number of basic styles, classes, and `@extend` directives for controlling the appearance of type on your page. 
+The `typography` module sets up a number of basic styles, classes, and `@extend` directives for controlling the appearance of type on your page. It also contains variable definitions for some shared typographic attributes.
 
 The `$ss-type-default-font-family` variable defined in this module can be used to specify your document's default (or root) typeface. This value must correspond to a font which you have defined in the `fonts` module, or defined elsewhere, or it must be a [default system font](http://www.cssfontstack.com/).
 
@@ -187,11 +187,7 @@ Built-in typographic decorator classes include:
 - `.label`
 - `.callout`
 - `.quotes`
-- `.light`
-
-<!---
-The `.center` class and `%center` @extend directive can be used to make typographic elements serve as centered content containers.
--->
+- `.button`
 
 The module is located at `src/scss/particles/global/_typography.scss`.
 
@@ -199,15 +195,16 @@ The module is located at `src/scss/particles/global/_typography.scss`.
 
 The `layout` module is used in conjunction with Foundation's Grid module to set up a basic responsive structure for your web content. It relies on variables defined in the `config` module to determine things like size and padding.
 
-To deliver the best experience across devices, it is suggested that you structure your page's content (including headers and footers) into discrete sections, wrapped by a `.view-content` element, like so:
+To deliver the best experience across devices, it is suggested that you structure your page's content (including headers and footers) into discrete sections, wrapped inside of the body of your document, like so:
 
 ```html
 <body>
-	<div class="view-content">
-		<!-- Content sections go in here! -->
-	</div>
-	<!-- Page scripts -->
-	<script src="/to/my/script.js"></script>
+	<!-- Content sections live here -->
+	<header>Hello!</header>
+	<section id="first-section">Welcome to my site!</section>
+	<footer>Goodbye!</footer>
+	<!-- Scripts live here -->
+	<script src="/js/my-cool-hax.js"></script>
 </body>
 ```
 
@@ -215,15 +212,13 @@ Conventionally, content sections use wrapper elements to achieve horizontal and 
 
 ```html
 <body>
-	<div class="view-content">
-		<section>
-			<div class="content">
-				<div class="container">
-					<!-- Section content -->
-				</div>
+	<section>
+		<div class="content">
+			<div class="container">
+				<!-- Section content lives here -->
 			</div>
-		</section>
-	</div>
+		</div>
+	</section>
 </body>
 ```
 
@@ -232,6 +227,14 @@ The framework's built-in header and footer implementations also follow this conv
 ```html
 <body>
 	<div class="view-content">
+		<header>
+			<div class="content">
+				<div class="container">
+					<!-- Header content -->
+				</div>
+			</div>
+		</header>
+		<!-- ... -->
 		<footer>
 			<div class="content">
 				<div class="container">
@@ -243,7 +246,7 @@ The framework's built-in header and footer implementations also follow this conv
 </body>
 ```
 
-A `section` will, by default, stretch to be the full width of the display, even if its content is constrained to be smaller. This means that background images applied to sections will still extend to the edges of the screen. You can use the `.fullscreen` class on a section to stretch it to be the full height of the screen as well (this is especially useful for mobile-first layouts).
+A `section` will, by default, stretch to be the full width of the display, even if its content is sized to be smaller. This means that background images applied to sections will still extend to the edges of the screen. You can use the `.fullscreen` class on a section to stretch it to be the full height of the screen as well (this is especially useful for elegant content divisions on mobile).
 
 This module is located at `src/scss/partials/global/_layout.scss`.
 
