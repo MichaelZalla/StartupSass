@@ -1,0 +1,21 @@
+/**
+ * @file _placeholderText.scss
+ * @author Michael Zalla
+ * @date 6-06-2014
+ *
+ * Contains a Sass mixin to simplify targeting <input> and
+ * <textarea> placeholder text with custom styles.
+ */
+
+@mixin placeholderText($property, $value) {
+
+	&::-webkit-input-placeholder,
+	&:-moz-placeholder,
+	&::-moz-placeholder,
+	&:-ms-input-placeholder {
+		
+		#{$property}: #{$value};
+
+	}
+
+}
