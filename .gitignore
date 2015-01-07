@@ -22,6 +22,7 @@ bower_components
 
 # Asset source files
 *.psd
+*.ai
 
 # Project build
 dist

@@ -21,10 +21,48 @@ module.exports = function(grunt) {
 				files: [
 					// Make all targets in 'src' directory copy to a location
 					// in 'dist' relative to own directory
-					{ expand:true, cwd:'src/', src:['*.html','*.png','*.ico'], dest:'dist' },
-					{ expand:true, cwd:'src/js/', src:['**'], dest:'dist/js' },
-					{ expand:true, cwd:'src/img/', src:['*.svg','*.png','*.jpg','*.jpeg'], dest:'dist/img' },
-					{ expand:true, cwd:'src/fonts/', src:['**'], dest:'dist/fonts' }
+					
+					// { expand:true, cwd:'src/', src:['*.html','*.png','*.ico'], dest:'dist' },
+					// { expand:true, cwd:'src/js/', src:['**'], dest:'dist/js' },
+					// { expand:true, cwd:'src/img/', src:['*.svg','*.png','*.jpg','*.jpeg'], dest:'dist/img' },
+					// { expand:true, cwd:'src/fonts/', src:['**'], dest:'dist/fonts' }
+					
+					{	// html
+						expand: true,
+						flatten: false,
+						cwd: 'src/',
+						src: ['**/*.html','**/*.md'],
+						dest: 'dist'
+					},
+					{	// favicon
+						expand: true,
+						flatten: false,
+						cwd: 'src/',
+						src: ['*.png', '*.ico'],
+						dest: 'dist'
+					},
+					{	// images
+						expand: true,
+						flatten: false,
+						cwd: 'src/images/',
+						src: ['**/*'],
+						dest: 'dist/images'
+					},
+					{	// media
+						expand: true,
+						flatten: false,
+						cwd: 'src/media/',
+						src: ['**/*'],
+						dest: 'dist/media'
+					},
+					{
+						// fonts
+						expand: true,
+						flatten: false,
+						cwd: 'src/fonts/',
+						src: ['**'],
+						dest: 'dist/fonts'
+					}
 				]
 			}
 		},
