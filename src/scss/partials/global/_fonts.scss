@@ -12,28 +12,28 @@
 
 /* Open Sans (Normal) */
 
-@include fontface("Open Sans", "../fonts/OpenSans/OpenSans-Light",
+@include fontface("Open Sans", "/fonts/OpenSans/OpenSans-Light",
 	$font-weight-light, normal);
 
-@include fontface("Open Sans", "../fonts/OpenSans/OpenSans-Regular",
+@include fontface("Open Sans", "/fonts/OpenSans/OpenSans-Regular",
 	$font-weight-regular, normal);
 
-@include fontface("Open Sans", "../fonts/OpenSans/OpenSans-Semibold",
+@include fontface("Open Sans", "/fonts/OpenSans/OpenSans-Semibold",
 	$font-weight-semibold, normal);
 
-@include fontface("Open Sans", "../fonts/OpenSans/OpenSans-Bold",
+@include fontface("Open Sans", "/fonts/OpenSans/OpenSans-Bold",
 	$font-weight-bold, normal);
 
 /* Open Sans (Italic) */
 
-@include fontface("Open Sans", "../fonts/OpenSans/OpenSans-LightItalic",
+@include fontface("Open Sans", "/fonts/OpenSans/OpenSans-LightItalic",
 	$font-weight-light, italic);
 
-@include fontface("Open Sans", "../fonts/OpenSans/OpenSans-RegularItalic",
+@include fontface("Open Sans", "/fonts/OpenSans/OpenSans-RegularItalic",
 	$font-weight-regular, italic);
 
-@include fontface("Open Sans", "../fonts/OpenSans/OpenSans-SemiboldItalic",
+@include fontface("Open Sans", "/fonts/OpenSans/OpenSans-SemiboldItalic",
 	$font-weight-semibold, italic);
 
-@include fontface("Open Sans", "../fonts/OpenSans/OpenSans-BoldItalic",
+@include fontface("Open Sans", "/fonts/OpenSans/OpenSans-BoldItalic",
 	$font-weight-bold, italic);
