@@ -226,23 +226,21 @@ The framework's built-in header and footer implementations also follow this conv
 
 ```html
 <body>
-	<div class="view-content">
-		<header>
-			<div class="content">
-				<div class="container">
-					<!-- Header content -->
-				</div>
+	<header>
+		<div class="content">
+			<div class="container">
+				<!-- Header content -->
 			</div>
-		</header>
-		<!-- ... -->
-		<footer>
-			<div class="content">
-				<div class="container">
-					<!-- Footer content -->
-				</div>
+		</div>
+	</header>
+	<!-- ... -->
+	<footer>
+		<div class="content">
+			<div class="container">
+				<!-- Footer content -->
 			</div>
-		</footer>
-	</div>
+		</div>
+	</footer>
 </body>
 ```
 
