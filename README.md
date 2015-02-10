@@ -168,7 +168,7 @@ This module is located at `src/scss/modules/_colors.scss`.
 
 #### Mixins
 
-StartupSass also provides a number of useful global mixins for common styling tasks. Many of these mixins come from the (SassMixins)[https://github.com/MichaelZalla/SassMixins] submodule, which is a separately hosted repository.
+StartupSass also provides a number of useful global mixins for common styling tasks. Many of these mixins come from the [SassMixins](https://github.com/MichaelZalla/SassMixins) submodule, which is a separately hosted repository.
 
 For information about these mixins (with examples), see: https://github.com/MichaelZalla/SassMixins/blob/master/_bundle.scss
 
