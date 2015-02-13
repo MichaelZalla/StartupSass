@@ -34,6 +34,13 @@ module.exports = function(grunt) {
 						src: ['**/*.html'],
 						dest: 'dist'
 					},
+					{	// first-party scripts
+						expand: true,
+						flatten: false,
+						cwd: 'src/js/',
+						src: ['**/*'],
+						dest: 'dist/js'
+					},
 					{	// favicon
 						expand: true,
 						flatten: false,
