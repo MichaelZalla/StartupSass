@@ -4,6 +4,11 @@ StartupSass is a small, responsive scaffolding designed to accelerate your web p
 
 StartupSass uses ZURB Foundation's Normalize and Grid modules to support layouts that are consistent and responsive across browser environments. The rest of the framework is written from scratch, giving you complete freedom to extend or remove style information, or simply write your styles on top of the existing framework.
 
+##### StartupSass in the Wild…
+
+- [HackOTR](http://www.hackotr.com)
+- [MusicPlay Analytics](http://www.musicplayanalytics.com)
+
 ---
 
 ### Getting Up and Running
